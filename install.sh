@@ -16,7 +16,7 @@ echo "Copying pip config"
 cp -r python_config/pip/ ~/.config/pip
 
 echo "Copying python startup file"
-cp python_config/.python_startup ~/
+cp python_config/.python_startup.py ~/
 
 echo ""
 echo "Close all terminals to reload all configs or do `source ~/.bashrc"
