@@ -9,6 +9,7 @@ alias sc='source ~/.bashrc'
 alias ..='cd ..'
 alias ...='cd ../../'
 alias ~='cd ~'
+alias -='cd -'
 
 # SSH
 alias sshadd='cd ~/.ssh && ssh-add id_rsa && cd -'
