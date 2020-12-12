@@ -19,4 +19,4 @@ echo "Copying python startup file"
 cp python_config/.python_startup.py ~/
 
 echo ""
-echo "Close all terminals to reload all configs or do `source ~/.bashrc"
+echo "Close all terminals to reload all configs or do source ~/.bashrc"
