@@ -1,5 +1,5 @@
 # Custom aliases
-PS1='\[\e[96m\][\d\t]:\[\e[93m\]\w\$ \[\e[0m\]'
+PS1='\[\e[96m\][\d \t]:\[\e[93m\]\w\$ \[\e[0m\]'
 
 # Alias Related
 alias myaliases='cat ~/.bash_aliases'
