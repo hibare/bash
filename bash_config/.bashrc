@@ -13,3 +13,9 @@ fi
 export PYTHONSTARTUP=~/.python_startup.py
 
 export TERM=xterm-256color
+
+export PATH=$PATH:/usr/local/go/bin
+
+# Go config
+export GOPRIVATE=*.hibare.in,*.x.secure
+export GOPATH=$HOME/Documents/go
