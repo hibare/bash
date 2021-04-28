@@ -9,6 +9,7 @@ alias sc='source ~/.bashrc'
 alias ..='cd ..'
 alias ...='cd ../../'
 alias ~='cd ~'
+alias project='cd ~/Documents/projects'
 
 # SSH
 alias sshadd='cd ~/.ssh && ssh-add id_rsa && cd -'
@@ -29,3 +30,7 @@ alias vactivate='source venv/bin/activate'
 alias vcreate='virtualenv -p python3 venv'
 
 alias hc='echo "" > logs/app.log && honcho start'
+
+# Wireguard
+alias wg0down='sudo wg-quick down wg0'
+alias wg0up='sudo wg-quick up wg0'
