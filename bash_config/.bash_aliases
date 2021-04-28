@@ -34,9 +34,10 @@ alias vcreate='virtualenv -p python3 venv'
 alias hc='echo "" > logs/app.log && honcho start'
 
 # Wireguard
-alias wg0down='sudo wg-quick down wg0'
-alias wg0up='sudo wg-quick up wg0'
+alias wgdown='sudo wg-quick down wg0'
+alias wgup='sudo wg-quick up wg0'
 alias wg='sudo wg'
+alias wgcheck='nslookup x.secure'
 
 
 # IP
