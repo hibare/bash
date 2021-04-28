@@ -34,3 +34,8 @@ alias hc='echo "" > logs/app.log && honcho start'
 # Wireguard
 alias wg0down='sudo wg-quick down wg0'
 alias wg0up='sudo wg-quick up wg0'
+alias wg='sudo wg'
+
+
+# IP
+alias myip='curl http://ipinfo.io'
