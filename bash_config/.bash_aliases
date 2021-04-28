@@ -10,6 +10,8 @@ alias ..='cd ..'
 alias ...='cd ../../'
 alias ~='cd ~'
 alias project='cd ~/Documents/projects'
+alias down='cd ~/Downloads'
+alias doc='cd ~/Documents'
 
 # SSH
 alias sshadd='cd ~/.ssh && ssh-add id_rsa && cd -'
