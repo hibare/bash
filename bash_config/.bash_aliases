@@ -9,7 +9,7 @@ alias sc='source ~/.bashrc'
 alias ..='cd ..'
 alias ...='cd ../../'
 alias ~='cd ~'
-alias project='cd ~/Documents/projects'
+alias projects='cd ~/Documents/projects'
 alias down='cd ~/Downloads'
 alias doc='cd ~/Documents'
 
