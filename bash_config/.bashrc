@@ -19,3 +19,6 @@ export PATH=$PATH:/usr/local/go/bin
 # Go config
 export GOPRIVATE=*.hibare.in,*.x.secure
 export GOPATH=$HOME/Documents/go
+
+# SSL
+export SSL_CERT_DIR=/etc/ssl/certs
