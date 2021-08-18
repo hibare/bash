@@ -22,3 +22,5 @@ export GOPATH=$HOME/Documents/go
 
 # SSL
 export SSL_CERT_DIR=/etc/ssl/certs
+
+eval "$(starship init bash)"
