@@ -43,3 +43,6 @@ alias wgrestart='wgdown && wgup'
 
 # IP
 alias myip='curl http://ipinfo.io'
+
+# VSCodium
+alias code='codium'
