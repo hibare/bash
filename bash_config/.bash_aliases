@@ -40,9 +40,12 @@ alias wgup='sudo wg-quick up wg0 && wgcheck'
 alias wg='sudo wg'
 alias wgrestart='wgdown && wgup'
 
-
 # IP
 alias myip='curl http://ipinfo.io'
 
 # VSCodium
 alias code='codium'
+
+# Mac equivalent of copy/paste commands
+alias pbcopy='xclip -selection clipboard'
+alias pbpaste='xclip -selection clipboard -o'

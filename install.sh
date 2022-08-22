@@ -2,6 +2,10 @@
 
 if [ ! -n "$BASH" ]; then echo Please run this script $0 with bash; exit 1; fi
 
+# Install requirements
+sudo apt-get update
+sudo apt-get install xclip -y
+
 echo "Copying bash config"
 
 cp -R bash_config/. ~/
