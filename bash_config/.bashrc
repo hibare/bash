@@ -24,3 +24,6 @@ export GOPATH=$HOME/Documents/go
 export SSL_CERT_DIR=/etc/ssl/certs
 
 eval "$(starship init bash)"
+
+# Export GPG key
+export GPG_TTY=$(tty)
