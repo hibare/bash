@@ -17,8 +17,8 @@ export TERM=xterm-256color
 export PATH=$PATH:/usr/local/go/bin
 
 # Go config
-export GOPRIVATE=*.hibare.in,*.x.secure
-export GOPATH=$HOME/Documents/go
+export GOPRIVATE=*.hibare.in
+export GOPATH=$HOME/go
 
 # SSL
 export SSL_CERT_DIR=/etc/ssl/certs
