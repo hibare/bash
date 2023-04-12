@@ -22,5 +22,11 @@ cp -R python_config/pip/. ~/.config/pip
 echo "Copying python startup file"
 cp python_config/.python_startup.py ~/
 
+echo "Making system script directory"
+mkdir -p ~/.system_scripts
+
+echo "Copying system_scripts"
+cp -R scripts/. ~/.system_scripts
+
 echo ""
 echo "Close all terminals to reload all configs or do source ~/.bashrc"

@@ -14,7 +14,7 @@ export PYTHONSTARTUP=~/.python_startup.py
 
 export TERM=xterm-256color
 
-export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
 export LC_ALL="en_US.UTF-8"
 
 # Go config
