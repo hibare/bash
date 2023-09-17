@@ -41,7 +41,7 @@ alias wg='sudo wg'
 alias wgrestart='wgdown && wgup'
 
 # IP
-alias myip='curl http://ipinfo.io'
+alias myip='curl -sfl https://ip.09876543.xyz/api/v1/ip/ | jq'
 
 # VSCodium
 alias code='codium'
