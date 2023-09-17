@@ -6,6 +6,8 @@ if [ ! -n "$BASH" ]; then echo Please run this script $0 with bash; exit 1; fi
 sudo apt-get update
 sudo apt-get install xclip -y
 
+command -v jq &> /dev/null || { echo "jq is not installed. Installing..."; sudo apt-get install -y jq; }
+
 echo "Copying bash config"
 
 cp -R bash_config/. ~/
