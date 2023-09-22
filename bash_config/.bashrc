@@ -30,9 +30,5 @@ eval "$(starship init bash)"
 # Export GPG key
 export GPG_TTY=$(tty)
 
-# FLYCTL
-export FLYCTL_INSTALL="/home/ranger/.fly"
-export PATH="$FLYCTL_INSTALL/bin:$PATH"
-
 # Dev flags
 export IS_LOCAL=true
