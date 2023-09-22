@@ -20,6 +20,7 @@ export LC_ALL="en_US.UTF-8"
 # Go config
 export GOPRIVATE=*.hibare.in
 export GOPATH=$HOME/go
+export GONOPROXY=github.com/hibare
 
 # SSL
 export SSL_CERT_DIR=/etc/ssl/certs
