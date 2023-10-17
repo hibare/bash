@@ -5,3 +5,7 @@ settitle() {
 update_go() {
     sh ~/.system_scripts/update_go.sh
 }
+
+update_discord() {
+    sh ~/.system_scripts/update_discord.sh
+}
