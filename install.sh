@@ -27,7 +27,7 @@ copy_files() {
 
 # Copy configurations and files
 echo "Copying bash config"
-copy_files "bash_config/" "$HOME/"
+copy_files "bash_config/." "$HOME/"
 
 echo "Making config directory"
 mkdir -p $HOME/.config
@@ -46,7 +46,7 @@ mkdir -p $HOME/.system_scripts
 
 
 echo "Copying system_scripts"
-copy_files "scripts/" "$HOME/.system_scripts"
+copy_files "scripts/." "$HOME/.system_scripts"
 
 # Provide instructions to the user
 echo -e "\nConfiguration setup is complete. Close all terminals to reload the configs."
