@@ -7,7 +7,7 @@ DEB_PACKAGE="discord.deb"
 
 # Download the latest Discord deb package
 echo "Downloading the latest Discord deb package..."
-wget -O "$DEB_PACKAGE" "$DOWNLOAD_URL"
+wget -q -O "$DEB_PACKAGE" "$DOWNLOAD_URL"
 
 # Check if the download was successful
 if [ $? -eq 0 ]; then
