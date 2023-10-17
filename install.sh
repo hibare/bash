@@ -1,34 +1,52 @@
-#!/bin/sh
+#!/bin/bash
 
-if [ ! -n "$BASH" ]; then echo Please run this script $0 with bash; exit 1; fi
+# Check if the script is running with bash
+if [ -z "$BASH" ]; then
+  echo "Please run this script with bash."
+  exit 1
+fi
 
-# Install requirements
-sudo apt-get update
-sudo apt-get install xclip -y
+# Install requirements if they are not already installed
+install_package() {
+  if ! command -v $1 &> /dev/null; then
+    echo "$1 is not installed. Installing..."
+    sudo apt-get install -y $1
+  fi
+}
 
-command -v jq &> /dev/null || { echo "jq is not installed. Installing..."; sudo apt-get install -y jq; }
+install_package xclip
+install_package jq
 
+# Function to copy files and directories
+copy_files() {
+  local source_dir="$1"
+  local target_dir="$2"
+  echo "Copying $source_dir to $target_dir"
+  cp -R "$source_dir" "$target_dir"
+}
+
+# Copy configurations and files
 echo "Copying bash config"
-
-cp -R bash_config/. ~/
+copy_files "bash_config/" "$HOME/"
 
 echo "Making config directory"
-mkdir -p ~/.config
+mkdir -p $HOME/.config
 
 echo "Creating pip directory"
-mkdir -p ~/.config/pip
+mkdir -p $HOME/.config/pip
 
 echo "Copying pip config"
-cp -R python_config/pip/. ~/.config/pip
+copy_files "python_config/pip/." "$HOME/.config/pip"
 
 echo "Copying python startup file"
-cp python_config/.python_startup.py ~/
+cp "python_config/.python_startup.py" $HOME/
 
 echo "Making system script directory"
-mkdir -p ~/.system_scripts
+mkdir -p $HOME/.system_scripts
+
 
 echo "Copying system_scripts"
-cp -R scripts/. ~/.system_scripts
+copy_files "scripts/" "$HOME/.system_scripts"
 
-echo ""
-echo "Close all terminals to reload all configs or do source ~/.bashrc"
+# Provide instructions to the user
+echo -e "\nConfiguration setup is complete. Close all terminals to reload the configs."
