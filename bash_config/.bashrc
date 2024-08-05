@@ -10,17 +10,19 @@ if [ -f $HOME/.bash_functions ]; then
     source $HOME/.bash_functions
 fi
 
+# Python
 export PYTHONSTARTUP=~/.python_startup.py
+export PATH=$PATH:$HOME/.local/bin
 
 export TERM=xterm-256color
 
-export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
 export LC_ALL="en_US.UTF-8"
 
 # Go config
 export GOPRIVATE=*.hibare.in
 export GOPATH=$HOME/go
 export GONOPROXY=github.com/hibare
+export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
 
 # SSL
 export SSL_CERT_DIR=/etc/ssl/certs

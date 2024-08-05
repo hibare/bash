@@ -44,7 +44,7 @@ alias wgrestart='wgdown && wgup'
 alias myip='curl -sfl https://ip.09876543.xyz/api/v1/ip/ | jq'
 
 # VSCodium
-alias code='codium'
+# alias code='codium'
 
 # Mac equivalent of copy/paste commands
 alias pbcopy='xclip -selection clipboard'
