@@ -1,40 +1,39 @@
 settitle() {
-    echo -n -e "\033]0;$1\007"
+  echo -n -e "\033]0;$1\007"
 }
 
 update_go() {
-    sh ~/.system_scripts/update_go.sh
+  $HOME/.system_scripts/update_go.sh
+  if [ $? -ne 0 ]; then
+    echo "Error: update_go.sh failed" >&2
+    return 1
+  fi
 }
 
 update_discord() {
-    sh ~/.system_scripts/update_discord.sh
+  $HOME/.system_scripts/update_discord.sh
+  if [ $? -ne 0 ]; then
+    echo "Error: update_discord.sh failed" >&2
+    return 1
+  fi
 }
 
 hadolint() {
-    sh ~/.system_scripts/hadolint.sh
+  $HOME/.system_scripts/hadolint.sh
+  if [ $? -ne 0 ]; then
+    echo "Error: hadolint.sh failed" >&2
+    return 1
+  fi
 }
+
 gen_env_example() {
-    # Check if .env file exists
-    if [ ! -f .env ]; then
-        echo ".env file not found!"
-        exit 1
-    fi
+  if [ ! -f .env ]; then
+    echo ".env file not found!" >&2
+    return 1
+  fi
 
-    # Create or overwrite .env.example file
-    > .env.example
+  # Use sed to create .env.example
+  sed -E 's/=.*$/=<VALUE>/' .env > .env.example
 
-    # Read .env file line by line
-    while IFS= read -r line; do
-        # Skip empty lines and comments
-        if [[ -z "$line" || "$line" == \#* ]]; then
-            echo "$line" >> .env.example
-        else
-            # Extract the key
-            key=$(echo "$line" | cut -d '=' -f 1)
-            # Write the key=<VALUE> format to .env.example
-            echo "$key=<VALUE>" >> .env.example
-        fi
-    done < .env
-
-    echo ".env.example file has been created."
+  echo ".env.example file has been created."
 }

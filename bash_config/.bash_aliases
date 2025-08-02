@@ -1,20 +1,20 @@
-# Custom aliases
+# Custom prompt
 PS1='\[\e[96m\][\d \t]:\[\e[93m\]\w\$ \[\e[0m\]'
 
-# Alias Related
-alias myaliases='cat ~/.bash_aliases'
-alias sc='source ~/.bashrc'
+# Alias Management
+alias myaliases='cat $HOME/.bash_aliases'
+alias sc='source $HOME/.bashrc'
 
-# cd
+# Directory Navigation
 alias ..='cd ..'
 alias ...='cd ../../'
 alias ~='cd ~'
-alias projects='cd ~/Documents/projects'
-alias down='cd ~/Downloads'
-alias doc='cd ~/Documents'
+alias projects='cd $HOME/Documents/projects'
+alias down='cd $HOME/Downloads'
+alias doc='cd $HOME/Documents'
 
 # SSH
-alias sshadd='cd ~/.ssh && ssh-add id_rsa && cd -'
+alias sshadd='cd $HOME/.ssh && ssh-add id_rsa && cd -'
 
 # Docker
 alias d='docker'
@@ -31,8 +31,6 @@ alias py3='python3'
 alias vactivate='source venv/bin/activate'
 alias vcreate='virtualenv -p python3 venv'
 
-alias hc='echo "" > logs/app.log && honcho start'
-
 # Wireguard
 alias wgcheck='nslookup int.hibare.in'
 alias wgdown='sudo wg-quick down wg0'
@@ -40,11 +38,8 @@ alias wgup='sudo wg-quick up wg0 && wgcheck'
 alias wg='sudo wg'
 alias wgrestart='wgdown && wgup'
 
-# IP
+# IP Address
 alias myip='curl -sfl https://ip.09876543.xyz/api/v1/ip/ | jq'
-
-# VSCodium
-# alias code='codium'
 
 # Mac equivalent of copy/paste commands
 alias pbcopy='xclip -selection clipboard'
