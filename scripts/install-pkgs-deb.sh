@@ -88,3 +88,10 @@ apt-get install -y \
   docker-compose-plugin \
   kubectl \
   helm
+
+
+# Install poetry
+curl -sSL https://install.python-poetry.org | python3 -
+
+# Install uv
+curl -LsSf https://astral.sh/uv/install.sh | sh
