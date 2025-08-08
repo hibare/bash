@@ -44,3 +44,6 @@ alias myip='curl -sfl https://ip.09876543.xyz/api/v1/ip/ | jq'
 # Mac equivalent of copy/paste commands
 alias pbcopy='xclip -selection clipboard'
 alias pbpaste='xclip -selection clipboard -o'
+
+# Kubernetes
+alias k9s='docker run --rm -it -v ~/.kube/config:/root/.kube/config quay.io/derailed/k9s'
