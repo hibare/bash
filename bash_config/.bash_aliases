@@ -1,3 +1,4 @@
+#!/bin/bash
 # Custom prompt
 PS1='\[\e[96m\][\d \t]:\[\e[93m\]\w\$ \[\e[0m\]'
 

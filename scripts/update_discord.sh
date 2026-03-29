@@ -26,10 +26,7 @@ log "Download complete."
 # Install the downloaded package using dpkg, resolving dependencies
 log "Installing Discord..."
 sudo apt update
-sudo apt install -f ./"$DEB_PACKAGE"
-
-# Check if the installation was successful
-if [ $? -ne 0 ]; then
+if ! sudo apt install -f ./"$DEB_PACKAGE"; then
   log "Installation failed. Please check for any dependency issues and try again."
   exit 1
 fi
