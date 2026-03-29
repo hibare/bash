@@ -1,3 +1,4 @@
+# shellcheck shell=bash
 # Source aliases and functions
 if [ -f "$HOME/.bash_aliases" ]; then
   source "$HOME/.bash_aliases"
@@ -23,7 +24,8 @@ export GONOPROXY="github.com/hibare"
 export SSL_CERT_DIR="/etc/ssl/certs"
 
 # Export GPG key
-export GPG_TTY=$(tty)
+GPG_TTY=$(tty)
+export GPG_TTY
 
 # Dev flags
 export IS_LOCAL=true

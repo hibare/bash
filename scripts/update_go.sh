@@ -42,7 +42,7 @@ sudo tar -C /usr/local -xzf "$ARCHIVE_NAME"
 # Add Go to the system path if it's not already there
 if ! grep -q '/usr/local/go/bin' "$HOME/.bashrc"; then
     log "Updating path in $HOME/.bashrc"
-    echo 'export PATH=$PATH:/usr/local/go/bin' >> "$HOME/.bashrc"
+    echo "export PATH=\$PATH:/usr/local/go/bin" >> "$HOME/.bashrc"
 fi
 
 # Clean up
