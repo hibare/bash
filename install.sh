@@ -38,7 +38,7 @@ echo "Copying system_scripts"
 copy_files "scripts/." "$HOME/.system_scripts"
 
 # Set execute permissions on scripts
-chmod +x "$HOME/.system_scripts/*"
+chmod +x "$HOME"/.system_scripts/*
 
 # Source bashrc
 echo "Sourcing .bashrc"
