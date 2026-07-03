@@ -3,7 +3,7 @@
 
 # Check if the script is running with bash (must be before set -euo pipefail
 # since POSIX sh doesn't support pipefail)
-if [ -z "${BASH:-}" ]; then
+if [ -z "${BASH_VERSION:-}" ]; then
   echo "Please run this script with bash."
   exit 1
 fi
