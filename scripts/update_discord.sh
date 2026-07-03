@@ -1,6 +1,13 @@
 #!/bin/bash
+# shellcheck shell=bash
 
 set -euo pipefail
+
+# Check for Debian-based system
+if ! command -v apt-get &> /dev/null; then
+  echo "This script is intended for Debian-based systems (like Ubuntu)."
+  exit 1
+fi
 
 # Define variables
 DOWNLOAD_URL="https://discord.com/api/download/stable?platform=linux&format=deb"

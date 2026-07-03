@@ -1,9 +1,5 @@
-#!/bin/bash
-# Custom prompt
-PS1='\[\e[96m\][\d \t]:\[\e[93m\]\w\$ \[\e[0m\]'
-
 # Alias Management
-alias myaliases='cat $HOME/.bash_aliases'
+alias myaliases='cat $HOME/.shell_config/aliases'
 alias sc='source $HOME/.bashrc'
 
 # Directory Navigation
@@ -40,11 +36,13 @@ alias wg='sudo wg'
 alias wgrestart='wgdown && wgup'
 
 # IP Address
-alias myip='curl -sfl https://ip.09876543.xyz/api/v1/ip/ | jq'
+alias myip='curl -sfl https://ip.hibare.in/api/v1/ip/ | jq'
 
-# Mac equivalent of copy/paste commands
-alias pbcopy='xclip -selection clipboard'
-alias pbpaste='xclip -selection clipboard -o'
+# Mac equivalent of copy/paste commands (Linux only — macOS has native pbcopy/pbpaste)
+if [ "$(uname -s)" != Darwin ]; then
+  alias pbcopy='xclip -selection clipboard'
+  alias pbpaste='xclip -selection clipboard -o'
+fi
 
 # Kubernetes
 alias k9s='docker run --rm -it -v ~/.kube/config:/root/.kube/config quay.io/derailed/k9s'

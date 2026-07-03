@@ -1,0 +1,27 @@
+settitle() {
+  printf '\033]0;%s\007' "$1"
+}
+
+update_discord() {
+  if ! "$HOME/.system_scripts/update_discord.sh"; then
+    echo "Error: update_discord.sh failed" >&2
+    return 1
+  fi
+}
+
+hadolint() {
+  if ! "$HOME/.system_scripts/hadolint.sh"; then
+    echo "Error: hadolint.sh failed" >&2
+    return 1
+  fi
+}
+
+gen_env_example() {
+  if [[ ! -f .env ]]; then
+    echo ".env file not found!" >&2
+    return 1
+  fi
+
+  sed -E 's/=.*$/=<VALUE>/' .env > .env.example
+  echo ".env.example file has been created."
+}
