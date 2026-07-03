@@ -46,4 +46,9 @@ jobs:
         uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
 
       - name: Run tests
-        run: docker run --rm -v "${{ github.workspace }}:/workdir" -w /workdir bats/bats@sha256:6e4b9369468b7f3fd8f402ac6cc8ea7b2e4903eae28d08785f31a0245eb51a44 tests/
+        run: |
+          if command -v docker &>/dev/null; then
+            docker run --rm -v "${{ github.workspace }}:/workdir" -w /workdir bats/bats@sha256:6e4b9369468b7f3fd8f402ac6cc8ea7b2e4903eae28d08785f31a0245eb51a44 tests/
+          else
+            npm install -g bats && bats tests/
+          fi
