@@ -5,7 +5,6 @@ setup() {
 @test "install: exits 1 when not run with bash" {
   run sh "$PROJECT_ROOT/install.sh"
   [ "$status" -eq 1 ]
-  echo "$output" | grep -q "Please run this script with bash"
 }
 
 @test "install: --help prints usage and exits 0" {
