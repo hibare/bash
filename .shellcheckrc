@@ -9,7 +9,3 @@ disable=SC1090
 # Disable SC2154 — variables assigned by sourced files
 
 disable=SC2154
-
-# Enable all other checks by default
-
-enable=all

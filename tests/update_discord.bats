@@ -7,6 +7,9 @@ setup() {
 }
 
 @test "update_discord: download URL responds with redirect" {
+  if ! command -v curl &>/dev/null; then
+    skip "curl not available"
+  fi
   run bash -c 'curl -sI "https://discord.com/api/download/stable?platform=linux&format=deb" | head -1'
   [ "$status" -eq 0 ]
   # Discord may return 302, 303, or other redirect codes depending on CDN

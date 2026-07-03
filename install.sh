@@ -62,7 +62,7 @@ copy_files() {
     return
   fi
   echo "Copying '$source_dir' to '$target_dir'"
-  cp -r "$source_dir" "$target_dir"
+  cp -R "$source_dir" "$target_dir"
 }
 
 # Copy configurations and files for the detected shell

@@ -1,6 +1,6 @@
 # shellcheck shell=bash
 # Custom prompt
-PROMPT='%F{cyan}[%D{%a %b %d} %D{%H:%M:%S}]:%F{yellow}%~%#%f '
+export PROMPT='%F{cyan}[%D{%a %b %d} %D{%H:%M:%S}]:%F{yellow}%~%#%f '
 
 # Source shared shell config
 for f in "$HOME/.shell_config/aliases" "$HOME/.shell_config/env" "$HOME/.shell_config/functions"; do
