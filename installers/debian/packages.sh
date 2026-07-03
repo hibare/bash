@@ -121,6 +121,7 @@ for pkg in docker.io docker-doc docker-compose podman-docker containerd runc; do
   fi
 done
 if [ -n "$CONFLICTING" ]; then
+  # shellcheck disable=SC2086
   apt-get remove -y $CONFLICTING
 fi
 
