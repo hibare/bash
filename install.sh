@@ -1,6 +1,13 @@
 #!/bin/bash
 # shellcheck shell=bash
 
+# Check if the script is running with bash (must be before set -euo pipefail
+# since POSIX sh doesn't support pipefail)
+if [ -z "${BASH:-}" ]; then
+  echo "Please run this script with bash."
+  exit 1
+fi
+
 set -euo pipefail
 
 SKIP_PACKAGES=false
@@ -19,12 +26,6 @@ while [[ $# -gt 0 ]]; do
   esac
   shift
 done
-
-# Check if the script is running with bash
-if [ -z "${BASH:-}" ]; then
-  echo "Please run this script with bash."
-  exit 1
-fi
 
 # Detect the user's default shell
 detect_shell() {
