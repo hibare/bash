@@ -6,8 +6,9 @@ setup() {
   grep -q 'Debian-based' "$PROJECT_ROOT/scripts/update_discord.sh"
 }
 
-@test "update_discord: downloads Discord deb package with curl" {
+@test "update_discord: download URL responds with redirect" {
   run bash -c 'curl -sI "https://discord.com/api/download/stable?platform=linux&format=deb" | head -1'
   [ "$status" -eq 0 ]
-  [[ "$output" =~ 302 ]] || [[ "$output" =~ 200 ]]
+  # Discord may return 302, 303, or other redirect codes depending on CDN
+  [[ "$output" =~ 30[0-9] ]]
 }
