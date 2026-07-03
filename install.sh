@@ -21,7 +21,7 @@ while [[ $# -gt 0 ]]; do
 done
 
 # Check if the script is running with bash
-if [[ -z "${BASH:-}" ]]; then
+if [ -z "${BASH:-}" ]; then
   echo "Please run this script with bash."
   exit 1
 fi

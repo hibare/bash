@@ -18,5 +18,8 @@ docs/plans/
 # Local virtual environment
 venv/
 
+# Node.js (bats test runner)
+node_modules/
+
 # Project-specific
 .python_startup.py  # user-specific copy
