@@ -105,7 +105,8 @@ echo "Copying system_scripts"
 copy_files "scripts/." "$HOME/.system_scripts"
 
 # Set execute permissions on scripts
-chmod +x "$HOME"/.system_scripts/*
+# shellcheck disable=SC2312
+shopt -s nullglob; chmod +x "$HOME"/.system_scripts/*; shopt -u nullglob
 
 # Install platform packages (unless skipped)
 if [[ "$SKIP_PACKAGES" = true ]]; then
@@ -130,16 +131,56 @@ fi
 bash installers/common/goenv.sh
 bash installers/common/uv.sh
 
+# Configure git user if .gitconfig doesn't exist or is missing user config
+setup_git_config() {
+  local template="$PWD/templates/gitconfig"
+  local target="$HOME/.gitconfig"
+  local name email
+
+  if [ ! -f "$template" ]; then
+    return
+  fi
+
+  # Check if user config already exists
+  if git config --file "$target" user.name &>/dev/null && \
+     git config --file "$target" user.email &>/dev/null; then
+    echo "Git user already configured — skipping."
+    return
+  fi
+
+  name="${GIT_USER_NAME:-}"
+  email="${GIT_USER_EMAIL:-}"
+
+  # Prompt if not set via environment
+  if [ -z "$name" ]; then
+    read -r -p "Enter your Git name: " name
+  fi
+  if [ -z "$email" ]; then
+    read -r -p "Enter your Git email: " email
+  fi
+
+  if [ -n "$name" ] && [ -n "$email" ]; then
+    sed -e "s/\${GIT_USER_NAME}/$name/g" -e "s/\${GIT_USER_EMAIL}/$email/g" \
+      "$template" > "$target"
+    echo "Git user configured: $name <$email>"
+  fi
+}
+setup_git_config
+
 # Source the installed shell rc
-if [[ "$CURRENT_SHELL" = "zsh" ]]; then
-  echo "Sourcing .zshrc"
-  # shellcheck source=/dev/null
-  source "$HOME/.zshrc" 2>/dev/null || echo "Warning: could not source .zshrc"
-else
-  echo "Sourcing .bashrc"
-  # shellcheck source=/dev/null
-  source "$HOME/.bashrc" 2>/dev/null || echo "Warning: could not source .bashrc"
-fi
+# Only source if running in the matching shell (don't source zshrc from bash)
+case "$(basename "${SHELL:-}")" in
+  zsh)
+    echo "Sourcing .zshrc"
+    # shellcheck source=/dev/null
+    source "$HOME/.zshrc" 2>/dev/null || echo "Warning: could not source .zshrc"
+    ;;
+  *)
+    echo "Sourcing .bashrc"
+    # shellcheck source=/dev/null
+    source "$HOME/.bashrc" 2>/dev/null || echo "Warning: could not source .bashrc"
+    ;;
+esac
 
 # Provide instructions to the user
 echo -e "\nConfiguration setup is complete. Please restart your terminal or run 'source $HOME/.bashrc' to apply the changes."

@@ -12,17 +12,22 @@ if [ -d "$HOME/.goenv/bin" ]; then
   export PATH="$GOENV_ROOT/bin:$PATH"
 fi
 
+# OS detection (cached to avoid spawning uname on every shell startup)
+export UNAME_S
+UNAME_S="$(uname -s)"
+
 # SSL
-# SSL
-if [ "$(uname -s)" = 'Darwin' ]; then
+if [ "${UNAME_S}" = 'Darwin' ]; then
   export SSL_CERT_DIR="/usr/local/etc/openssl/certs"
 else
   export SSL_CERT_DIR="/etc/ssl/certs"
 fi
 
 # Export GPG key
-GPG_TTY=$(tty)
-export GPG_TTY
+if [ -t 0 ]; then
+  GPG_TTY=$(tty)
+  export GPG_TTY
+fi
 
 # Dev flags (override by setting IS_LOCAL=false in ~/.bash_env or ~/.zshenv)
 export IS_LOCAL="${IS_LOCAL:-true}"

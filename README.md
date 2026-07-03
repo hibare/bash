@@ -5,7 +5,7 @@ Personal development environment bootstrapper for Debian-based Linux and macOS.
 ## Quick Start
 
 ```shell
-sh install.sh
+bash install.sh
 ```
 
 ## Prerequisites

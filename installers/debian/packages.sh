@@ -64,11 +64,17 @@ add_repo \
   "/etc/apt/sources.list.d/opentofu.list" \
   "deb [arch=$(dpkg --print-architecture) signed-by=$KEYRINGS_DIR/opentofu.gpg,$KEYRINGS_DIR/opentofu-repo.gpg] https://packages.opentofu.org/opentofu/tofu/any/ any main"
 
-# Docker
-ensure_keyring "https://download.docker.com/linux/ubuntu/gpg" "docker.gpg"
+# Docker (use Debian repo for Debian, Ubuntu repo for Ubuntu)
+DOCKER_OS="ubuntu"
+. /etc/os-release
+if [ -n "${ID:-}" ] && [ "$ID" != "ubuntu" ]; then
+  DOCKER_OS="$ID"
+fi
+DOCKER_CODENAME="${UBUNTU_CODENAME:-${VERSION_CODENAME}}"
+ensure_keyring "https://download.docker.com/linux/${DOCKER_OS}/gpg" "docker.gpg"
 add_repo \
   "/etc/apt/sources.list.d/docker.list" \
-  "deb [arch=$(dpkg --print-architecture) signed-by=$KEYRINGS_DIR/docker.gpg] https://download.docker.com/linux/ubuntu $(. /etc/os-release && echo "${UBUNTU_CODENAME:-$VERSION_CODENAME}") stable"
+  "deb [arch=$(dpkg --print-architecture) signed-by=$KEYRINGS_DIR/docker.gpg] https://download.docker.com/linux/${DOCKER_OS} ${DOCKER_CODENAME} stable"
 
 # Kubectl
 ensure_keyring "https://pkgs.k8s.io/core:/stable:/v1.33/deb/Release.key" "kubernetes.gpg"
@@ -107,12 +113,16 @@ else
   echo "All repositories already configured — skipping apt-get update."
 fi
 
-# Remove conflicting packages
+# Remove conflicting packages (batch check to avoid multiple apt calls)
+CONFLICTING=""
 for pkg in docker.io docker-doc docker-compose podman-docker containerd runc; do
   if dpkg -s "$pkg" &>/dev/null 2>&1; then
-    apt-get remove -y "$pkg"
+    CONFLICTING="$CONFLICTING $pkg"
   fi
 done
+if [ -n "$CONFLICTING" ]; then
+  apt-get remove -y $CONFLICTING
+fi
 
 # Install required packages
 apt-get install -y \

@@ -39,7 +39,7 @@ alias wgrestart='wgdown && wgup'
 alias myip='curl -sfl https://ip.hibare.in/api/v1/ip/ | jq'
 
 # Mac equivalent of copy/paste commands (Linux only — macOS has native pbcopy/pbpaste)
-if [ "$(uname -s)" != Darwin ]; then
+if [ "${UNAME_S}" != Darwin ]; then
   alias pbcopy='xclip -selection clipboard'
   alias pbpaste='xclip -selection clipboard -o'
 fi
