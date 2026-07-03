@@ -18,9 +18,8 @@ shellcheck: ## Run shellcheck on all shell files
 		shells/bash/.bash_functions shells/bash/.bash_env shells/bash/.bash_profile \
 		scripts/*.sh shells/shared/*
 
-test: ## Run tests (requires bats)
-	@command -v bats >/dev/null 2>&1 || { echo "bats not installed. Run: npm install -g bats"; exit 1; }
-	@bats tests/
+test: ## Run tests (requires npm install first — see package.json)
+	@npx bats tests/
 
 update: ## Run update scripts (Discord only if on Debian)
 	@bash scripts/hadolint.sh || true

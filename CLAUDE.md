@@ -7,7 +7,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ```bash
 make install   # Run full installation (copies configs, installs packages)
 make lint      # Run shellcheck on all shell files
-make test      # Run bats test suite (requires: npm install -g bats)
+make test      # Run bats test suite (requires: npm install first)
 make update    # Run update scripts (Discord, hadolint)
 ```
 
