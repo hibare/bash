@@ -1,0 +1,25 @@
+# OS artifacts
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# Editor
+.vscode/
+.idea/
+
+# Generated docs
+docs/codebase/
+
+# Historical plan docs (keep on branch, not tracked in future)
+docs/plans/
+
+# Local virtual environment
+venv/
+
+# Node.js (bats test runner)
+node_modules/
+
+# Project-specific
+.python_startup.py  # user-specific copy

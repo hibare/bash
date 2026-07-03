@@ -2,23 +2,9 @@ name: Checks
 
 on:
   push:
-    tags:
-      - "v*"
-    branches:
-      - main
-      - master
-
+    branches: ["**"]
   pull_request:
-    branches:
-      - "main"
-      - "master"
-      - "dev"
-    paths-ignore:
-      - "**/README.md"
-      - "**/Makefile"
-      - "**/.env.**"
-      - "**/docker-compose.*.yml"
-      - "**/.vscode"
+    branches: ["**"]
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.head_ref || github.ref_name }}
@@ -28,7 +14,7 @@ permissions:
   contents: read
 
 jobs:
-  run-pre-commit:
+  pre-commit:
     runs-on: ubuntu-latest
     steps:
       - name: Harden the runner (Audit all outbound calls)
@@ -44,3 +30,29 @@ jobs:
 
       - name: Run pre-commit
         uses: hibare/.github/github/shared-workflows/pre-commit//@ec61c90a75c7438d3fa683fffffd83908d1e7447 # v0.10.0
+
+  test:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    steps:
+      - name: Harden the runner (Audit all outbound calls)
+        uses: step-security/harden-runner@9af89fc71515a100421586dfdb3dc9c984fbf411 # v2.19.4
+        with:
+          egress-policy: audit
+
+      - name: Checkout
+        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@cdca7365b2dadb8aad0a33bc7601856ffabcc48e # v4.3.0
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run tests
+        run: npx bats tests/

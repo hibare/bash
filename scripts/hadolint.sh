@@ -1,9 +1,10 @@
 #!/bin/bash
+# shellcheck shell=bash
 
 set -euo pipefail
 
 # Check if Dockerfile is provided
-if [ -z "$1" ]; then
+if [ $# -eq 0 ]; then
   echo "Usage: $0 <Dockerfile> [hadolint options]" >&2
   exit 1
 fi

@@ -1,0 +1,11 @@
+# Disable SC1091 — we source files that may not exist in CI
+
+disable=SC1091
+
+# Disable SC1090 — dynamic source paths
+
+disable=SC1090
+
+# Disable SC2154 — variables assigned by sourced files
+
+disable=SC2154

@@ -33,3 +33,20 @@ updates:
       pre-commit:
         patterns:
           - "*"
+
+  # Maintain dependencies for npm (bats)
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "monthly"
+      day: "friday"
+      time: "00:30"
+    target-branch: "main"
+    cooldown:
+      default-days: 10
+    assignees:
+      - "hibare"
+    groups:
+      npm:
+        patterns:
+          - "*"

@@ -1,0 +1,27 @@
+{
+  "name": "bash",
+  "version": "1.0.0",
+  "description": "Personal development environment bootstrapper for Debian-based Linux and macOS.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs",
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hibare/bash.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hibare/bash/issues"
+  },
+  "homepage": "https://github.com/hibare/bash#readme",
+  "devDependencies": {
+    "bats": "^1.13.0"
+  }
+}
