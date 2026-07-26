@@ -20,4 +20,4 @@ Key groups: Docker, Python, WireGuard, directory navigation, Kubernetes.
 ## Functions
 
 Add or modify shell functions in `shells/shared/functions` (shared), or `shells/bash/.bash_functions` / `shells/zsh/.zsh_functions`.
-Built-in: `hadolint`, `update_discord`, `gen_env_example`, `settitle`.
+Built-in: `hadolint`, `tflint`, `update_discord`, `gen_env_example`, `settitle`.

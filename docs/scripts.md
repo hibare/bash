@@ -33,3 +33,9 @@ Downloads and installs the latest Discord .deb package (Debian-only).
 Wraps the hadolint Dockerfile linter. Passes a Dockerfile through `hadolint/hadolint` container.
 
 Usage: `./scripts/hadolint.sh <Dockerfile> [hadolint options]`
+
+## `scripts/tflint.sh`
+
+Wraps TFLint for Terraform linting. Mounts the target directory into `ghcr.io/terraform-linters/tflint`.
+
+Usage: `./scripts/tflint.sh <terraform-directory> [tflint options]`

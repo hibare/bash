@@ -2,7 +2,7 @@
 export PYTHONSTARTUP="$HOME/.python_startup.py"
 
 # Go module config (versions managed by goenv)
-export GOPRIVATE="*.hibare.in"
+export GOPRIVATE="*.hibare.in,github.com/hibare/*"
 export GOPATH="$HOME/go"
 export GONOPROXY="github.com/hibare"
 
@@ -38,3 +38,10 @@ export PATH="$GOPATH/bin:$HOME/.local/bin:$PATH"
 # Terminal settings
 export TERM="xterm-256color"
 export LC_ALL="en_US.UTF-8"
+
+# opencode
+export PATH=/home/ranger/.opencode/bin:$PATH
+
+export NVM_DIR="$HOME/.config/nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

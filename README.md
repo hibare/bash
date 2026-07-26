@@ -37,7 +37,7 @@ bash install.sh
   - `debian/` — Debian apt-based package installation
   - `macos/` — macOS Homebrew-based package installation
 - `python_config/` — Python startup script, pip configuration
-- `scripts/` — Utility scripts (hadolint wrapper, Discord updater)
+- `scripts/` — Utility scripts (hadolint, tflint, Discord updater)
 
 ## Usage
 
@@ -48,7 +48,7 @@ bash install.sh
 | `make install` | Run full installation |
 | `make lint` | Run shellcheck on all shell files |
 | `make test` | Run bats test suite |
-| `make update` | Run update scripts (Discord, hadolint) |
+| `make update` | Run update scripts (Discord, hadolint, tflint) |
 
 ### Key Aliases
 

@@ -108,6 +108,13 @@ copy_files "scripts/." "$HOME/.system_scripts"
 # shellcheck disable=SC2312
 shopt -s nullglob; chmod +x "$HOME"/.system_scripts/*; shopt -u nullglob
 
+# Create symlinks in ~/.local/bin for scripts that wrap well-known tools
+# so tools like pre-commit can find them (e.g. tflint)
+mkdir -p "$HOME/.local/bin"
+if [ -f "$HOME/.system_scripts/tflint.sh" ]; then
+  ln -sf "$HOME/.system_scripts/tflint.sh" "$HOME/.local/bin/tflint"
+fi
+
 # Install platform packages (unless skipped)
 if [[ "$SKIP_PACKAGES" = true ]]; then
   echo "Skipping package installation (--skip-packages flag set)."

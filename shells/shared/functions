@@ -16,6 +16,13 @@ hadolint() {
   fi
 }
 
+tflint() {
+  if ! "$HOME/.system_scripts/tflint.sh"; then
+    echo "Error: tflint.sh failed" >&2
+    return 1
+  fi
+}
+
 gen_env_example() {
   if [[ ! -f .env ]]; then
     echo ".env file not found!" >&2

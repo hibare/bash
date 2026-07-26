@@ -21,6 +21,7 @@ shellcheck: ## Run shellcheck on all shell files
 test: ## Run tests (requires npm install first — see package.json)
 	@npx bats tests/
 
-update: ## Run update scripts (Discord only if on Debian)
+update: ## Run update scripts (Discord, linter wrappers)
 	@bash scripts/hadolint.sh || true
+	@bash scripts/tflint.sh . || true
 	@test -f /usr/bin/apt-get && bash scripts/update_discord.sh || true
