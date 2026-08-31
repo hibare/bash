@@ -12,7 +12,7 @@ repos:
       - id: check-shebang-scripts-are-executable
 
   - repo: https://github.com/jumanjihouse/pre-commit-hooks
-    rev: 3.0.0
+    rev: 38980559e3a605691d6579f96222c30778e5a69e # 3.0.0
     hooks:
       - id: shellcheck
 
